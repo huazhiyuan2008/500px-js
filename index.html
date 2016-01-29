@@ -24,13 +24,20 @@
             // Get my favorites
             _500px.api('/photos', { feature: 'user_favorites', user_id: me.id }, function (response) {
               if (response.data.photos.length == 0) {
-                alert('You have no favorite photos.');
+                console.log('You have no favorite photos.');
               } else {
                 $.each(response.data.photos, function () {
                   $('#logged_in').append('<img src="' + this.image_url + '" />');
                 });
               }
             });
+          });
+
+        _500px.api('photos/137827319', {image_size: 6},  function(response){
+            console.log(response.data)
+            var photo = response.data.photo;
+            $('#photos').append('<img src="' + photo.image_url + '" />');
+            console.log(photo.image_url);
           });
         });
 
@@ -55,5 +62,6 @@
     </div>
     <div id="logged_in" style="display: none;">
     </div>
+    <div id="photos"> </div>
   </body>
 </html>
