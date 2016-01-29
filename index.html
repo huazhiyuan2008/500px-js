@@ -33,7 +33,7 @@
             });
           });
 
-        _500px.api('photos/137827319', {image_size: 6},  function(response){
+        _500px.api('photos/137827319', {image_size: 4},  function(response){
             console.log(response.data)
             var photo = response.data.photo;
             $('#photos').append('<img src="' + photo.image_url + '" />');
